@@ -13,6 +13,23 @@ RUN set -eux; \
                 git \
                 sudo \
                 sqlite3 \
+                make \
+                libcurl4-openssl-dev \
+                libssl-dev \
+                libxml2-dev \
+                zlib1g-dev \
+                libfontconfig1-dev \
+                libfreetype6-dev \
+                libpng-dev \
+                libtiff5-dev \
+                libjpeg-dev \
+                libharfbuzz-dev \
+                libfribidi-dev \
+                libpq-dev \
+                libgit2-dev \
+                gdal-bin libgdal-dev \
+                libudunits2-dev \
+                pandoc \
                 ca-certificates \
                 gcc \
                 libc6-dev \
@@ -37,7 +54,7 @@ RUN set -eux; \
         rm -rf /var/lib/apt/lists/*;
         
 # Install R packages
-RUN install2.r --error -s --deps TRUE htmltools tibble dplyr purrr rlang glue this.path DBI pool RSQLite remotes promises assertthat log here zeallot dbplyr stringr tidyverse
+RUN install2.r --error -s --deps TRUE htmltools tibble dplyr purrr rlang glue this.path DBI pool RSQLite remotes promises assertthat log here zeallot dbplyr stringr tidyverse rmarkdown plotly
 RUN Rscript -e "install.packages('b64', repos = c('https://extendr.r-universe.dev', getOption('repos')))" 
 RUN Rscript -e "install.packages('uwu', repos = c('https://josiahparry.r-universe.dev', getOption('repos')))" 
 RUN --mount=type=secret,id=GITHUB_PAT GITHUB_PAT=$(cat /run/secrets/GITHUB_PAT) \
