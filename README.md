@@ -25,6 +25,8 @@ Or test it locally:
 
 ```
 git clone git@github.com:jrosell/ambhtmx.plotly.git
+cd ambhtmx.plotly
+echo GITHUB_PAT="Your token from github" >> .Renviron
 bash docker_run.sh
 ```
 
